@@ -16,7 +16,7 @@
             width: 209px;
         }
         .auto-style4 {
-            width: 220px;
+            width: 162px;
         }
     </style>
 </head>
@@ -25,13 +25,19 @@
         <div>
             <table class="auto-style1">
                 <tr>
-                    <td class="auto-style3">&nbsp;</td>
+                    <td class="auto-style3">
+                        <asp:Button ID="BTN_Logout" runat="server" CausesValidation="False" OnClick="BTN_Logout_Click" Text="Logout" />
+
+                    </td>
                     <td class="auto-style2">&nbsp;</td>
                     <td class="auto-style4">&nbsp;</td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style3">&nbsp;</td>
+                    <td class="auto-style3">
+                        <asp:Button ID="BTN_MNGBook" runat="server" CausesValidation="False" OnClick="BTN_MNGBook_Click" Text="Manage Book" />
+                    </td>
+
                     <td class="auto-style2">Student T number:</td>
                     <td class="auto-style4">
                         <asp:TextBox ID="TXTBox_TNumber" runat="server"></asp:TextBox>

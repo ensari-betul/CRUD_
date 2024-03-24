@@ -14,10 +14,10 @@ namespace week4Crud
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString);
 
         protected void Page_Load(object sender, EventArgs e)
-        {
+         {
             //if (Session["New"] == null)
             //{
-            //    Response.Redirect("BookMnagerLogin2.aspx");
+            //    Response.Redirect("default.aspx");
             //}
 
         }
@@ -46,7 +46,7 @@ namespace week4Crud
                                     var a = rd["Email_ad"].ToString();
                                     Session["New"] = rd["Email_ad"].ToString();
                                     con.Close();
-                                    Response.Redirect("Webform1.aspx", false);
+                                    Response.Redirect("default.aspx", false);
                                     break;
                                 }
                                 else

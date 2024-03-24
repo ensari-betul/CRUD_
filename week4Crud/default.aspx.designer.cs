@@ -24,6 +24,24 @@ namespace week4Crud
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// BTN_Logout control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTN_Logout;
+
+        /// <summary>
+        /// BTN_MNGBook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTN_MNGBook;
+
+        /// <summary>
         /// TXTBox_TNumber control.
         /// </summary>
         /// <remarks>
