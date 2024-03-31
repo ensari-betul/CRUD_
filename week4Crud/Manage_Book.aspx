@@ -94,11 +94,11 @@
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
-                    <td class="auto-style8">&nbsp;</td>
+                   <td class="auto-style8">&nbsp;</td>
                     <td class="auto-style5">Book ISBN: </td>
                     <td class="auto-style6">
-                        <asp:DropDownList ID="DDL_ISBN" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDL_ISBN_SelectedIndexChanged" DataTextField="ISBN" DataValueField="ISBN" DataSourceID="SqlDataSource1">
-                        </asp:DropDownList><asp:SqlDataSource runat="server" ID="SqlDataSource1" ConnectionString="<%$ ConnectionStrings:ConnectionString %>" SelectCommand="SELECT [ISBN] FROM [Book_Info_2]"></asp:SqlDataSource>
+                        <asp:DropDownList ID="DDL_ISBN" runat="server" AutoPostBack="True" OnSelectedIndexChanged="DDL_ISBN_SelectedIndexChanged">
+                        </asp:DropDownList>
                     </td>
                     <td>&nbsp;</td>
                     <td>&nbsp;</td>

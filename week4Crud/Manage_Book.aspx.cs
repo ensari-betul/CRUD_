@@ -41,6 +41,31 @@ namespace week4Crud
                 {
                     Response.Write(ex.ToString());
                 }
+                //loading book info
+                try
+                {
+                    string ISBN, studentname, s_email, S_dept;
+                    con.Open();
+                    string qry = "select * from Book_Info_2";
+                    SqlCommand cmd = new SqlCommand(qry, con);
+                    SqlDataReader rd = cmd.ExecuteReader();
+                    if (rd != null)
+                    {
+                        while (rd.Read())
+                        {
+                            ISBN = rd["ISBN"].ToString();
+                            DDL_ISBN.Items.Add(new ListItem(ISBN, ISBN));
+                        }
+
+                    }
+                    con.Close();
+                }
+                catch (Exception ex)
+                {
+                    Response.Write(ex.ToString());
+                }
+                DDL_TNo_SelectedIndexChanged(null, null);
+                DDL_ISBN_SelectedIndexChanged(null, null);
             }
         }
 
@@ -86,55 +111,69 @@ namespace week4Crud
         }
         protected void DDL_ISBN_SelectedIndexChanged(object sender, EventArgs e)
         {
+            string noOFbook = "0";
             try
             {
-                // Retrieve selected ISBN
-                string selectedISBN = DDL_ISBN.SelectedValue;
 
-                // Open connection
+                string ISBN = "", bookname = "", b_dept = "";
+                ISBN = DDL_ISBN.SelectedItem.Text.ToString();
                 con.Open();
-
-                // SQL query to retrieve book information
-                string qry = "select * from Book_Info_2 where ISBN=@ISBN";
-
-                // Create SQL command with parameterized query
+                string qry = "select * from Book_Info_2 where ISBN='" + ISBN + "'";
                 SqlCommand cmd = new SqlCommand(qry, con);
-                cmd.Parameters.AddWithValue("@ISBN", selectedISBN); // Add ISBN parameter
-
-                // Execute SQL command and get SqlDataReader
                 SqlDataReader rd = cmd.ExecuteReader();
-
-                // Check if data is available
-                if (rd.HasRows)
+                if (rd != null)
                 {
-                    // Read data
+
                     while (rd.Read())
                     {
-                        // Get book information from SqlDataReader
-                        string bookName = rd["Book_Name"].ToString();
-                        string bookSubject = rd["Book_Subject"].ToString();
+                        bookname = rd["Book_Name"].ToString();
+                        b_dept = rd["Book_Subject"].ToString();
+                        noOFbook = rd["Number_of_Books"].ToString();
 
-                        // Display book information in labels
-                        LBL_BookName.Text = bookName;
-                        LBL_BookSubject.Text = bookSubject;
                     }
-                }
 
-                // Close SqlDataReader and connection
-                rd.Close();
+                    LBL_BookName.Text = bookname;
+                    LBL_BookSubject.Text = b_dept;
+                    LBL_TotalBook.Text = noOFbook;
+
+                }
                 con.Close();
             }
             catch (Exception ex)
             {
                 Response.Write(ex.ToString());
             }
+
+            // Loading the remaining book
+            try
+            {
+                string remainingBook = "";
+                con.Open();
+                string qry2 = "select count(ISBN) as CT from Book_RentInfo where ISBN='" + DDL_ISBN.SelectedItem.ToString() + "'";
+                SqlCommand cmd = new SqlCommand(qry2, con);
+                SqlDataReader rd = cmd.ExecuteReader();
+                if (rd != null)
+                {
+                    while (rd.Read())
+                    {
+                        remainingBook = rd["CT"].ToString();
+                    }
+                }
+
+                LBL_ReaminingBook.Text = (Convert.ToInt32(noOFbook) - Convert.ToInt32(remainingBook)).ToString();
+            }
+            catch (Exception ex)
+            {
+                Response.Write(ex.ToString());
+            }
         }
-        protected void BTN_Rentdate_Click (object sender, EventArgs e)
+
+        protected void BTN_Rentdate_Click(object sender, EventArgs e)
         {
-        
             Calendar1.Visible = true;
             BTN_selectdateRent.Visible = true;
         }
+
         protected void BTN_selectdateRent_Click(object sender, EventArgs e)
         {
             BTN_Rentdate.Text = Calendar1.SelectedDate.ToShortDateString();
@@ -151,7 +190,6 @@ namespace week4Crud
             BTN_ReturnDate.Text = Calendar2.SelectedDate.ToShortDateString();
             Calendar2.Visible = false;
             BTN_SelectdateReturn.Visible = false;
-
 
         }
         protected void BTN_Rent_Click(object sender, EventArgs e)
@@ -178,7 +216,6 @@ namespace week4Crud
                             LBL_Message.Text = "Book rented successfully.";
                             DDL_ISBN_SelectedIndexChanged(null, null);
 
-
                         }
                         else
                         {
@@ -192,9 +229,9 @@ namespace week4Crud
                 }
                 else
                 {
+
                     LBL_Message.Text = "Select Date";
                 }
-
 
             }
             catch (Exception ex)
@@ -202,7 +239,5 @@ namespace week4Crud
                 Response.Write(ex.ToString());
             }
         }
-
     }
-
 }
