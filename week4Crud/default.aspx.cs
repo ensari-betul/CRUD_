@@ -75,5 +75,10 @@ namespace week4Crud
         {
             Response.Redirect("Manage_Book.aspx");
         }
+
+        protected void BTN_ReturnBook_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Return_Book.aspx");
+        }
     }
 }

@@ -69,6 +69,7 @@
   <ItemGroup>
     <Content Include="BookManagerLogin.aspx" />
     <Content Include="BookMnagerLogin2.aspx" />
+    <Content Include="Return_Book.aspx" />
     <Content Include="default.aspx" />
     <Content Include="App_Data\LMS.mdf" />
     <Content Include="App_Data\LMS_log.ldf">
@@ -94,6 +95,13 @@
     </Compile>
     <Compile Include="BookMnagerLogin2.aspx.designer.cs">
       <DependentUpon>BookMnagerLogin2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Return_Book.aspx.cs">
+      <DependentUpon>Return_Book.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Return_Book.aspx.designer.cs">
+      <DependentUpon>Return_Book.aspx</DependentUpon>
     </Compile>
     <Compile Include="default.aspx.cs">
       <DependentUpon>default.aspx</DependentUpon>

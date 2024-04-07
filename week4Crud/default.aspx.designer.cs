@@ -51,6 +51,15 @@ namespace week4Crud
         protected global::System.Web.UI.WebControls.TextBox TXTBox_TNumber;
 
         /// <summary>
+        /// BTN_ReturnBook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button BTN_ReturnBook;
+
+        /// <summary>
         /// TXTBox_StudentName control.
         /// </summary>
         /// <remarks>
